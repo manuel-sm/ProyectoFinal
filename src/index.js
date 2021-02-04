@@ -1,3 +1,5 @@
+import { createTask } from './components/items.js';
+
 const app = document.getElementById('app');
 
 const input = document.createElement('input');
@@ -14,21 +16,7 @@ const div = document.createElement('div');
 app.append(h1, input, button, div);
 
 button.addEventListener('click', function(event) {  
-  const item = document.createElement('div');
-  
-  const task = document.createElement('p');
-  const text = document.createTextNode(input.value);
-  task.append(text);
-
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-
-  const check = document.createElement('input');
-  check.type = 'checkbox';
-
-  item.append(check, task, deleteButton);
-
-
+  const item = createTask(input.value)
   div.append(item);
   item.style.display = 'flex';
   input.value = '';
