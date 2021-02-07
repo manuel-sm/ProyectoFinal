@@ -18,7 +18,6 @@ class Ingreso extends Component {
         payload: task
       })
     }
-    
   }
 
   render() {

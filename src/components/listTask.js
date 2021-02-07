@@ -1,6 +1,8 @@
 import { createElement } from "../utils/render-functions.js";
 import Component from "./component.js";
 import { store } from '../redux/store.js';
+import Task from "./task.js";
+import { render } from '../utils/render-functions.js';
 
 class ListTask extends Component {
   
@@ -18,8 +20,11 @@ class ListTask extends Component {
 
   addTask() {
     store.subscribe(() => {
-      this.element.append(createElement('section', {}, 'Hello World'));
-      console.log(store.getState());
+      render(new Task({
+          content: store.getState().task
+        }),
+        this.element
+      );
     });
   }
 

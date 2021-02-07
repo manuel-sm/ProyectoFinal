@@ -25,6 +25,7 @@ class Button extends Component {
   render() {
     return createElement('button', {
       class: this.props.type,
+      onClick: this.props.onClick
     }, this.props.content);
   }
 
