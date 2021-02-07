@@ -1,5 +1,6 @@
-import layout from './components/layout.js';
+import { render } from './utils/render-functions.js';
+import App from './components/app.js';
 
 const app = document.getElementById('app');
-app.append(layout);
+render(new App(), app);
 
