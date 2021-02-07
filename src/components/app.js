@@ -2,6 +2,7 @@ import { createElement } from "../utils/render-functions.js";
 import Component from "./component.js";
 import Header from "./header.js";
 import Ingreso from "./Ingreso.js";
+import ListTask from "./listTask.js";
 
 export default class App extends Component {
 
@@ -11,6 +12,7 @@ export default class App extends Component {
       children: [
         new Header(),
         new Ingreso(),
+        new ListTask()
       ]
     })
 

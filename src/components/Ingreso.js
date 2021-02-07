@@ -2,6 +2,8 @@ import { createElement } from "../utils/render-functions.js";
 import Button from "./button.js";
 import Component from "./component.js";
 import Input from "./input.js";
+import { store } from '../redux/store.js';
+import { ADD_TASK, DELETE_TASK } from '../redux/actions.js';
 
 class Ingreso extends Component {
 
@@ -9,7 +11,14 @@ class Ingreso extends Component {
     event.preventDefault();
     const formData = new FormData(event.target);
     const task = formData.get('task');
-    console.log(task);
+   
+    if (task) {
+      return store.dispatch({
+        type: ADD_TASK,
+        payload: task
+      })
+    }
+    
   }
 
   render() {
