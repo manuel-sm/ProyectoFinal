@@ -1,3 +1,8 @@
+
+function decoration(type, element) {
+  element.parentElement.style.textDecoration = type;
+}
+
 function createTask(value) {
   const item = document.createElement('div');
     
@@ -11,6 +16,18 @@ function createTask(value) {
   const check = document.createElement('input');
   check.type = 'checkbox';
   
+  deleteButton.addEventListener('click', function() {
+    this.parentElement.remove();
+  })
+
+  check.addEventListener('change', function(event) {
+    if (event.target.checked) {
+      decoration('line-through', this);
+    } else {
+      decoration('none', this);
+    }
+  })
+
   item.append(check, task, deleteButton);
   return item;
 }
