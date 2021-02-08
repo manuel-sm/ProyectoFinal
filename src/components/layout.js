@@ -27,8 +27,19 @@ button.addEventListener('click', function(event) {
   input.value = '';
 });
 
+function addTaskEnter(event){
+  if (event.key == "Enter"){
+    const item = createTask(input.value)
+  div.append(item);
+  item.style.display = 'flex';
+  input.value = '';
+  }
+}
+
 const section = document.createElement('section');
 section.className = 'container text-center my-4 col-md-4';
 section.append(divApp, div);
+
+document.body.addEventListener("keydown", addTaskEnter);
 
 export default section;
