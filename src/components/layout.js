@@ -21,6 +21,7 @@ divApp.className = 'mb-2';
 const div = document.createElement('div');
 
 button.addEventListener('click', function(event) {  
+  if (!input.value) return;
   const item = createTask(input.value)
   div.append(item);
   item.style.display = 'flex';

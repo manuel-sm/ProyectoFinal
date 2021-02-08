@@ -1,6 +1,6 @@
 
 function decoration(type, element) {
-  element.parentElement.style.textDecoration = type;
+  element.parentElement.parentElement.nextSibling.style.textDecoration = type;
 }
 
 function createTask(value) {
@@ -46,7 +46,7 @@ function createTask(value) {
     }
   })
 
-  item.append(check, task, deleteButton);
+  item.append(divTask);
   return item;
 }
 
