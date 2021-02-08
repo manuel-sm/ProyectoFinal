@@ -35,7 +35,7 @@ function createTask(value) {
   divTask.append(divInputPrepend, task, deleteButton);
   
   deleteButton.addEventListener('click', function() {
-    this.parentElement.remove();
+    this.parentElement.parentElement.remove();
   })
 
   check.addEventListener('change', function(event) {
