@@ -46,6 +46,7 @@ function createTask(value) {
     }
   })
 
+  item.className = 'mb-2';
   item.append(divTask);
   return item;
 }

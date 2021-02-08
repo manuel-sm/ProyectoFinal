@@ -16,7 +16,7 @@ h1.textContent = 'Todo App';
 divAddTask.append(input, button);
 divAddTask.className = 'input-group';
 divApp.append(h1, divAddTask);
-divApp.className = 'mb-2';
+divApp.className = 'mb-4';
 
 const div = document.createElement('div');
 
@@ -28,8 +28,19 @@ button.addEventListener('click', function(event) {
   input.value = '';
 });
 
+function addTaskEnter(event){
+  if (event.key == "Enter"){
+    const item = createTask(input.value)
+  div.append(item);
+  item.style.display = 'flex';
+  input.value = '';
+  }
+}
+
 const section = document.createElement('section');
 section.className = 'container text-center my-4 col-md-4';
 section.append(divApp, div);
+
+document.body.addEventListener("keydown", addTaskEnter);
 
 export default section;
