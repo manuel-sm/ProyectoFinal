@@ -1,4 +1,30 @@
 import { createTask } from './items.js';
+const div = document.createElement('div');
+
+function addLocalStorage(value) {
+  
+  let taskList = JSON.parse(localStorage.getItem('taskList')) || [];
+  taskList.push(value);
+  const data = JSON.stringify(taskList);
+  localStorage.setItem('taskList', data);
+}
+
+
+function getLocalStorage() {
+  return JSON.parse(localStorage.getItem('taskList')) || []; 
+}
+
+function buildItems() {
+  const elementItem = [];
+  const items = getLocalStorage();
+
+  for (let i = 0; i < items.length; i++) {
+    elementItem.push(createTask(items[i]));
+  }
+  div.append(...elementItem);
+}
+
+buildItems();
 
 const divApp = document.createElement('div');
 const divAddTask = document.createElement('div');
@@ -18,14 +44,15 @@ divAddTask.className = 'input-group';
 divApp.append(h1, divAddTask);
 divApp.className = 'mb-2';
 
-const div = document.createElement('div');
 
-button.addEventListener('click', function(event) {  
-  if (!input.value) return;
-  const item = createTask(input.value)
+button.addEventListener('click', function() {
+  let value = input.value;  
+  if (!value) return;
+  addLocalStorage(value);
+  const item = createTask(value)
   div.append(item);
   item.style.display = 'flex';
-  input.value = '';
+  value = '';
 });
 
 const section = document.createElement('section');
