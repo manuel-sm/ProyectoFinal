@@ -1,8 +1,17 @@
-
+/**
+ * Se encarga de agregar una decoración al texto de la tarea
+ * @param {string} type estilo que se le agregará al texto de la tarea
+ * @param {Element} element elemento botón que fue presionado
+ */
 function decoration(type, element) {
   element.parentElement.parentElement.nextSibling.style.textDecoration = type;
 }
 
+/**
+ * Crea una nueva tarea lista para ser agregada al navegador
+ * @param {string} value descripción de la tarea
+ * @returns {HTMLDivElement} Div con la tarea, botón y checkbutton
+ */
 function createTask(value) {
   const item = document.createElement('div');
 

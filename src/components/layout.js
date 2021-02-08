@@ -20,20 +20,31 @@ divApp.className = 'mb-4';
 
 const div = document.createElement('div');
 
-button.addEventListener('click', function(event) {  
+/**
+ * Se encarga de crear una tarea y agregarla al navegador
+ */
+function addTask() {
   if (!input.value) return;
   const item = createTask(input.value)
   div.append(item);
   item.style.display = 'flex';
   input.value = '';
+}
+
+/**
+ * Añade una tarea en caso de que el usuario de click en el botón de agregar
+ */
+button.addEventListener('click', function() {  
+  addTask()
 });
 
+/**
+ * Aññade una tarea en caso de que el usuario pulse la tecla enter
+ * @param {KeyboardEvent} event 
+ */
 function addTaskEnter(event){
   if (event.key == "Enter"){
-    const item = createTask(input.value)
-  div.append(item);
-  item.style.display = 'flex';
-  input.value = '';
+   addTask();
   }
 }
 
