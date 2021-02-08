@@ -29,6 +29,7 @@ function createTask(value) {
 
   divTask.append(divInputPrepend, task, deleteButton);
   
+  item.className = 'mb-2';
   item.append(divTask);
   return item;
 }

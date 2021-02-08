@@ -16,7 +16,7 @@ h1.textContent = 'Todo App';
 divAddTask.append(input, button);
 divAddTask.className = 'input-group';
 divApp.append(h1, divAddTask);
-divApp.className = 'mb-2';
+divApp.className = 'mb-4';
 
 const div = document.createElement('div');
 
