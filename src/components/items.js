@@ -1,3 +1,5 @@
+import { createElement } from "./createElement.js";
+
 /**
  * Se encarga de agregar una decoración al texto de la tarea
  * @param {string} type estilo que se le agregará al texto de la tarea
@@ -13,36 +15,22 @@ function decoration(type, element) {
  * @returns {HTMLDivElement} Div con la tarea, botón y checkbutton
  */
 function createTask(value) {
-  const item = document.createElement('div');
+  // Creacion de elementos
+  const item = createElement('div', {class: 'mb-2'});
+  const divTask = createElement('div', {class: 'input-group'});
+  const divInputPrepend = createElement('div', {class: 'input-group-prepend'});
+  const divInput = createElement('div', {class: 'input-group-text', style: 'height: 100%'});
+  const task = createElement('input', {class: 'form-control', readOnly: true, placeholder: value});
+  const deleteButton = createElement('button', {class: 'btn btn-outline-danger'}, 'Delete');
+  const check = createElement('input', {type: 'checkbox'});
 
-  const divTask = document.createElement('div');
-  divTask.className = 'input-group';
-
-  const divInputPrepend = document.createElement('div');
-  divInputPrepend.className = 'input-group-prepend';
-
-  const divInput = document.createElement('div');
-  divInput.className = 'input-group-text';
-  divInput.style.height = '100%';
-    
-  const task = document.createElement('input');
-  task.className = 'form-control';
-  task.readOnly = true;
-  task.placeholder = value;
-  
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-  deleteButton.className = 'btn btn-outline-danger';
-  
-  const check = document.createElement('input');
-  check.type = 'checkbox';
-
+  // Agregar elementos al dom
   divInput.append(check);
-
   divInputPrepend.append(divInput);
-
   divTask.append(divInputPrepend, task, deleteButton);
-  
+  item.append(divTask);
+
+  // Agregar eventos a los elementos  
   deleteButton.addEventListener('click', function() {
     this.parentElement.parentElement.remove();
   })
@@ -55,8 +43,6 @@ function createTask(value) {
     }
   })
 
-  item.className = 'mb-2';
-  item.append(divTask);
   return item;
 }
 
